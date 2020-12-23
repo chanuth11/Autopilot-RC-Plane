@@ -122,8 +122,7 @@ while runner:
     coor_file = open(coordinates)
     current = coor_file.readlines()
     temp = receive_input(current[-1])  # last values of long and lat in the file
-    pos_x = (temp[
-                 0] - original_x) * scale_factor  # figure out what to multiply these two statements by for proper scaling.
+    pos_x = (temp[0] - original_x) * scale_factor  # figure out what to multiply these two statements by for proper scaling.
     pos_y = (temp[1] - original_y) * scale_factor
     '''for x in range (len(alpha)):
     if x == 7: continue
