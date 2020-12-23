@@ -1,8 +1,3 @@
-    /////////////////////////////////////////////////////////////////
-   //             Easy Arduino Button             v1.02           //
-  //       Get the latest version of the code here:              //
- //           http://educ8s.tv/arduino-gps-tracker              //
-/////////////////////////////////////////////////////////////////
 
 #include <SD.h>
 #include <SPI.h>
@@ -53,6 +48,8 @@ void loop()
       monthString = String(gps.date.month());
       hourString = String(gps.time.hour());
       minuteString = String(gps.time.minute());
+      //will add compass one 
+      //retrieves each data from the gps
       if(gps.time.hour()<10)
       {
         hourString = "0"+String(gps.time.hour());
@@ -103,7 +100,7 @@ int initializeSD()
 int openFileToWrite(char filename[])
 {
   file = SD.open(filename, FILE_WRITE);
-
+  //open file
   if (file)
   {
     Serial.println("opened file");
@@ -120,6 +117,7 @@ int writeToFile(String text)
   if (file)
   {
     file.println(text);
+    //write to file
     return 1;
   } else
   {
@@ -140,7 +138,7 @@ void writeEntryToFile(String entry)
   writeToFile(entry);
   Serial.println(entry);
   file.close();
-
+  //close the SD card file
 }
 
 void blinkQuickly()
@@ -155,4 +153,5 @@ void writeHeaderToFile()
 {
   Serial.println("writing file");
   writeEntryToFile("Id,Date,Time,Latitude,Longitude");
+  //need to write this information in the SD card file for google earth to recognize the data
 }
